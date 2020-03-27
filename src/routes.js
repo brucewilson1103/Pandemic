@@ -1,5 +1,5 @@
 import Home from './components/Home.vue';
-import Government from './components/government/Government.vue';
+import Government from './components/government/Government.vue'
 import Medical from './components/medical/Medical.vue';
 
 
