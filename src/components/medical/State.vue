@@ -1,17 +1,18 @@
 <template>
   <div class="col-sm-6 col-md-3">
-    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-      <div class="card-header">
-        <h4 class="card-header success">
+    <div class="card text-white bg-info mb-3 center" style="max-width: 18rem;">
+      <div class="card-title">
+        <h4 class="card-title success">
           {{ state.name }}
-          <br />
-          <small>Infected: {{ state.infected }}</small>
-          <br />
-          <small>Deaths: {{ state.deaths }}</small>
+        
+         
         </h4>
       </div>
       <div class="card-body">
-        <h5 class="card-title">Info card title</h5>
+        <h5 class="card-title"><a :href="state.details">Details</a></h5>
+         <small>Infected: {{ state.infected }}</small>
+         
+          <small>Deaths: {{ state.deaths }}</small>
         <div class="pull-left">
           <input
             class="form-control"
@@ -22,13 +23,10 @@
         </div>
         <div class="card-body">
           <div class="pull-right">
-            <button class="btn btn-success">Snapshot</button>
+            <button class="btn btn-success"
+            @click="saveSnapshot()">Snapshot</button>
           </div>
         </div>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
       </div>
     </div>
   </div>
@@ -40,6 +38,18 @@ export default {
     return {
       quantity: 0
     };
+  },
+  methods:{
+        saveSnapshot(){
+              let snapShot= {
+                    stateId: this.state.id,
+                    deaths : this.state.deaths,
+                    infected : this.state.infected,
+                    date: Date.now()
+              }
+              console.log('snapShot :', snapShot);
+              
+        }
   },
   props: ["state"]
 };
